@@ -72,11 +72,44 @@
 
  /* Escribir una funcion para encontrar el mayor comun divisor de 2 numeros positivos enteros // Usar recursion */
 
+ function maxDiv(num1, num2){
+    if(num1==0){
+        return num2;
+    }
+    return maxDiv(num2%num1, num1);
+ }
+
+ console.log(maxDiv(120,12));
+
 
 /*Encontrar los primeros n elementos de la serie fibonacci // Usar recursion */
 
+function susFibonacci(nElement){
+    if(nElement<2){
+        return nElement;
+    }else{
+        return (susFibonacci(nElement-1)+ susFibonacci(nElement-2));
+    }
+}
+
+
+console.log(susFibonacci(8));
+
 
 /*  Encontrar el numero n de una figura piramidal triangular (tetrahedron) // (nivel) -> cantidad de numeritos */
+
+function tetrahedron(level){
+    let total = 0
+    for(let a=1; a<=level; a++){
+        let calc=((a*(a+1))/(2));
+        total = total + calc;
+    }
+    return total;
+}
+
+
+console.log(tetrahedron(3));
+
 
 
 /* Crear una funcion que tome el nombre de un pais y su area // (nombre, a)  
@@ -84,11 +117,34 @@ Debe regresar la proporcion del area del pais en acorde a el area de tierra en e
 ('Russia', 17098242) -> Russia is 11.48%  
 ("USA", 9372610) -> "USA is 6.29%  */
 
+function countrySurface(nameCountry, areaCountry){
+    const areaEart = 149008108.10;
+    return (`${nameCountry} is ${((areaCountry/areaEart)*100)} %`);
+}
+
+console.log(countrySurface("USA", 9372610));
+
 
 
 /*Escribir una funcion que retorne 0 si el input es 1 y 1 si el input es 0 // No se pueden utilizar condicionales, ternarios, negaciones ni operatores bit  */
 
+function neg(number){  
+    return(number-number+1-number);
+}
+
+console.log(neg(0));
 
 /* Messenger bzzz // (0 ) n // Si no hay nadie -> "No hay nadie en linea" // Si hay 1 persona -> "user1 esta en linea" // Si hay 2 personas -> "user1 y user2 estan en linea" // Si hay n>2 personas, "user1 y n-1 mas estan en linea" */
 
- 
+function numberPeople(number){
+    if(number>2){
+        return (`user1 y ${number-1} mas estan en linea`);
+    }else if (number==2){
+        return (`user1 y user2 estan en linea`);
+    }else if (number == 1){
+        return (`user1 esta en linea`);
+    }
+}
+
+
+console.log(numberPeople(10));
